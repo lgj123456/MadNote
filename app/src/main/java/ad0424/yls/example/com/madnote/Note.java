@@ -1,24 +1,14 @@
 package ad0424.yls.example.com.madnote;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by yhdj on 2017/4/28.
  */
 
-public class Note {
+public class Note extends DataSupport {
 
 
-//    public Note(String title, String content){
-//        this.title = title;
-//        this.content = content;
-//    }
-
-    public NoteType getNoteType() {
-        return mNoteType;
-    }
-
-    public void setNoteType(NoteType noteType) {
-        mNoteType = noteType;
-    }
 
     public boolean isStar() {
         return isStar;
@@ -83,7 +73,26 @@ public class Note {
     private String videoPath;
     private boolean isColock;
     private boolean isStar;
-    private NoteType mNoteType;
+
+    public int getNoteType() {
+        return NoteType;
+    }
+
+    public void setNoteType(int noteType) {
+        NoteType = noteType;
+    }
+
+    private int NoteType;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
 
     public String getModifyTime() {
         return modifyTime;
@@ -94,4 +103,22 @@ public class Note {
     }
 
     private String modifyTime;
+    private String createTime;
+    private int isDel;
+
+    public int getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(int isDel) {
+        this.isDel = isDel;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_note"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ad0424.yls.example.com.madnote.AddNoteActivity">
+
+    <!--<android.support.v7.widget.Toolbar-->
+        <!--android:id="@+id/add_note_toolBar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:background="@color/colorBlue"-->
+        <!--/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorBlue"
+        >
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/iv_title"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:text="MadNote"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/tv_title"
+        android:textSize="26sp"
+        />
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/iv_confirm"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/confirm"
+        />
+
+    </LinearLayout>
+    <com.hdl.mricheditor.view.MRichEditor
+        android:id="@+id/mre_editor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/bg_love"
+            android:scaleType="centerCrop"
+            android:alpha="0.3"
+            android:id="@+id/iv_bg_love"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/bg_study"
+            android:scaleType="centerCrop"
+            android:alpha="0.3"
+            android:id="@+id/iv_bg_study"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/bg_sport"
+            android:scaleType="centerCrop"
+            android:alpha="0.3"
+            android:id="@+id/iv_bg_sport"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/bg_news"
+            android:scaleType="centerCrop"
+            android:alpha="0.3"
+            android:id="@+id/iv_bg_news"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/bg_game"
+            android:scaleType="centerCrop"
+            android:alpha="0.3"
+            android:id="@+id/iv_bg_game"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/bg_life"
+            android:scaleType="centerCrop"
+            android:alpha="0.3"
+            android:id="@+id/iv_bg_life"
+            android:visibility="gone"
+            />
+
+    </com.hdl.mricheditor.view.MRichEditor>
+</LinearLayout>

@@ -8,7 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 /**
  * Created by yhdj on 2017/4/28.
@@ -16,9 +18,10 @@ import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
     private Context mContext = null;
-    private ArrayList<Note> mNoteArrayList = null;
+    private List<Note> mNoteArrayList = null;
 
-    public MyAdapter(Context mContext, ArrayList<Note> mNoteArrayList) {
+
+    public MyAdapter(Context mContext, List<Note> mNoteArrayList) {
         this.mContext = mContext;
         this.mNoteArrayList = mNoteArrayList;
     }
@@ -57,10 +60,44 @@ public class MyAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
+
         Note note = mNoteArrayList.get(position);
-        viewHolder.mTv_content.setText(note.getContent());
+
+
+        int noteType = note.getNoteType();
+        switch (noteType) {
+            case NoteType.GAME:
+                viewHolder.mTv_content.setText("游戏");
+                break;
+            case NoteType.LIFE:
+                viewHolder.mTv_content.setText("生活");
+                break;
+            case NoteType.LOVE:
+                viewHolder.mTv_content.setText("爱情");
+                break;
+            case NoteType.SPORT:
+                viewHolder.mTv_content.setText("运动");
+                break;
+            case NoteType.STUDY:
+                viewHolder.mTv_content.setText("学习");
+                break;
+            case NoteType.NEWS:
+                viewHolder.mTv_content.setText("新闻");
+                break;
+        }
+
         viewHolder.mTv_title.setText(note.getTitle());
         viewHolder.mModifyTime.setText(note.getModifyTime());
+
+        if(note.getImgPath() != null){
+            Glide.with(convertView.getContext()).load(note.getImgPath()).into(viewHolder.MyImage);
+        }else{
+            viewHolder.MyImage.setImageResource(R.drawable.a1);
+        }
+
+
+
         return convertView;
     }
 

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "ad0424.yls.example.com.madnote"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -30,4 +30,9 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.prolificinteractive:material-calendarview:1.4.0'
     compile 'com.android.support:design:25.3.1'
+    compile 'com.github.Hitomis:CircleMenu:v1.1.0'
+    compile 'com.huangdali:mricheditor:1.0.1'
+    compile 'org.litepal.android:core:1.4.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
 }
