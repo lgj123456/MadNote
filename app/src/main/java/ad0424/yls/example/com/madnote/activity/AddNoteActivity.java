@@ -1,5 +1,6 @@
 package ad0424.yls.example.com.madnote.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -30,10 +31,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import ad0424.yls.example.com.madnote.R;
+import ad0424.yls.example.com.madnote.model.NoteType;
+import ad0424.yls.example.com.madnote.utils.BmobUtil;
 import ad0424.yls.example.com.madnote.utils.DatabaseUtils;
 import ad0424.yls.example.com.madnote.utils.MediaUtils;
-import ad0424.yls.example.com.madnote.model.NoteType;
-import ad0424.yls.example.com.madnote.R;
+
+import static ad0424.yls.example.com.madnote.utils.BmobUtil.uploadFile;
 
 public class AddNoteActivity extends AppCompatActivity {
 
@@ -71,6 +75,11 @@ public class AddNoteActivity extends AppCompatActivity {
     //声明AMapLocationClientOption对象
     private AMapLocationClientOption mLocationOption = null;
     private String location = "";
+    private String phoneNum = "";
+    private String imgUrl;
+    private String audioUrl;
+    private String videoUrl;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,13 +122,16 @@ public class AddNoteActivity extends AppCompatActivity {
 
     private void initData() {
 
+
     }
 
     private void initViews() {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.add_note_toolBar);
 //        setSupportActionBar(toolbar);
-
-
+         progressDialog = new ProgressDialog(AddNoteActivity.this);
+        progressDialog.setTitle("提示");
+        progressDialog.setMessage("保存中······");
+        progressDialog.setCancelable(false);
         editor = (MRichEditor) findViewById(R.id.mre_editor);
         editor.setPreviewBtnVisibility(View.GONE);
 
@@ -137,7 +149,6 @@ public class AddNoteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mEditorBeen = editor.getEditorList();
 
-
                 if (mEditorBeen.size() > 0) {
                     for (int i = 0; i < mEditorBeen.size(); i++) {
                         temp = temp + mEditorBeen.get(i);
@@ -154,13 +165,35 @@ public class AddNoteActivity extends AppCompatActivity {
                     content = str[1];
                     if (str.length >= 3) {
                         imgPath = str[2];
+                     imgUrl = BmobUtil.uploadFile(imgPath);
+                        Toast.makeText(AddNoteActivity.this, "imgurl = "+imgUrl, Toast.LENGTH_SHORT).show();
                     }
                     Toast.makeText(AddNoteActivity.this, "您所在的位置是： " + location, Toast.LENGTH_SHORT).show();
                     Date date = new Date();
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                     createTime = simpleDateFormat.format(date);
                     modifyTime = simpleDateFormat.format(date);
+
+                    if(imgUrl == null || audioUrl == null || videoUrl == null){
+
+                        progressDialog.show();
+                    }
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(2000);
+                                progressDialog.dismiss();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }).start();
+
+                    BmobUtil.insert(title,content,createTime,modifyTime,noteType,phoneNum,imgUrl,audioUrl,videoUrl);
                     DatabaseUtils.insert(title, content, createTime, imgPath, modifyTime, noteType, mAudioRecorderPath, mVideoPath);
+
                     Intent intent = new Intent(AddNoteActivity.this, MainActivity.class);
                     startActivity(intent);
 
@@ -188,7 +221,7 @@ public class AddNoteActivity extends AppCompatActivity {
         mediaUtils = new MediaUtils(this);
         mediaUtils.setRecorderType(MediaUtils.MEDIA_AUDIO);
         mediaUtils.setTargetDir(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC));
-        mediaUtils.setTargetName(UUID.randomUUID() + ".m4a");
+        mediaUtils.setTargetName(UUID.randomUUID() + ".mp3");
         // btn
         initHandler();
 
@@ -283,6 +316,9 @@ public class AddNoteActivity extends AppCompatActivity {
             case RESULT_VIDEO_PATH:
                 if (resultCode == RESULT_OK) {
                     mVideoPath = data.getStringExtra("videoPath");
+                   videoUrl =  uploadFile(mVideoPath);
+                    Toast.makeText(AddNoteActivity.this, "videoUrl = "+videoUrl, Toast.LENGTH_SHORT).show();
+
                     Toast.makeText(this, "video = " + mVideoPath, Toast.LENGTH_SHORT).show();
                 }
                 break;
@@ -395,6 +431,8 @@ public class AddNoteActivity extends AppCompatActivity {
                                         mediaUtils.stopRecordSave();
                                         String path = mediaUtils.getTargetFilePath();
                                         mAudioRecorderPath = path;
+                                       audioUrl = uploadFile(mAudioRecorderPath);
+                                        Toast.makeText(AddNoteActivity.this, "audioUrl" + audioUrl, Toast.LENGTH_SHORT).show();
                                         Toast.makeText(AddNoteActivity.this, "maudiopath" + mAudioRecorderPath, Toast.LENGTH_SHORT).show();
                                         Toast.makeText(AddNoteActivity.this, "文件以保存至：" + path, Toast.LENGTH_SHORT).show();
                                         break;
@@ -426,7 +464,6 @@ public class AddNoteActivity extends AppCompatActivity {
                 mediaUtils.stopRecordSave();
                 Toast.makeText(AddNoteActivity.this, "录音超时", Toast.LENGTH_SHORT).show();
                 String path = mediaUtils.getTargetFilePath();
-
                 Toast.makeText(AddNoteActivity.this, "文件以保存至：" + path, Toast.LENGTH_SHORT).show();
             }
         }
@@ -452,7 +489,6 @@ public class AddNoteActivity extends AppCompatActivity {
             duration = "60";
             return -1;
         }
-
     }
 
     private void startAnim(boolean isStart) {

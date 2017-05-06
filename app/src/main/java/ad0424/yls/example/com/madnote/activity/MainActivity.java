@@ -34,10 +34,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import ad0424.yls.example.com.madnote.utils.DatabaseUtils;
+import ad0424.yls.example.com.madnote.R;
 import ad0424.yls.example.com.madnote.adapter.MyAdapter;
 import ad0424.yls.example.com.madnote.model.Note;
-import ad0424.yls.example.com.madnote.R;
+import ad0424.yls.example.com.madnote.utils.BmobUtil;
+import ad0424.yls.example.com.madnote.utils.DatabaseUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void applyPermissions() {
-        String permissions[] = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA,Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.RECORD_AUDIO};
+        String permissions[] = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.RECORD_AUDIO};
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, permissions, 1001);
         }
@@ -146,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwipeEnd(int position) {
 
-
             }
         });
 
@@ -160,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "del_index =" + del_index, Toast.LENGTH_SHORT).show();
                         int id = mNoteArrayList.get(del_index).getId();
                         Toast.makeText(MainActivity.this, "id=" + id, Toast.LENGTH_SHORT).show();
+                        BmobUtil.del(id);
                         DatabaseUtils.del(id);
                         mNoteArrayList.clear();
                         mNoteArrayList = DatabaseUtils.query();
@@ -179,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, NoteTypeActivity.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -269,5 +270,8 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

@@ -1,14 +1,12 @@
 package ad0424.yls.example.com.madnote.model;
 
-import org.litepal.crud.DataSupport;
+import cn.bmob.v3.BmobObject;
 
 /**
- * Created by yhdj on 2017/4/28.
+ * Created by yhdj on 2017/5/6.
  */
 
-public class Note extends DataSupport {
-
-
+public class NoteUser extends BmobObject {
     public boolean isStar() {
         return isStar;
     }
@@ -72,7 +70,7 @@ public class Note extends DataSupport {
     private String videoPath;
     private boolean isColock;
     private boolean isStar;
-   
+    private String phoneNum;
     public int getNoteType() {
         return NoteType;
     }
@@ -82,6 +80,14 @@ public class Note extends DataSupport {
     }
 
     private int NoteType;
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
 
     public int getId() {
         return id;

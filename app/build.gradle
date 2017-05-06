@@ -34,5 +34,6 @@ dependencies {
     compile 'com.huangdali:mricheditor:1.0.1'
     compile 'org.litepal.android:core:1.4.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'cn.bmob.android:bmob-sdk:3.5.5'
 
 }

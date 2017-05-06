@@ -12,6 +12,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import ad0424.yls.example.com.madnote.utils.BmobUtil;
 import ad0424.yls.example.com.madnote.utils.DatabaseUtils;
 import ad0424.yls.example.com.madnote.R;
 
@@ -69,6 +70,8 @@ public class UpdateActivity extends AppCompatActivity {
                 Date date = new Date();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 modifyTime = simpleDateFormat.format(date);
+
+                BmobUtil.update(id,title,content,modifyTime);
                 DatabaseUtils.update(id, title, content, modifyTime);
                 Toast.makeText(UpdateActivity.this, "修改成功！！！", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
