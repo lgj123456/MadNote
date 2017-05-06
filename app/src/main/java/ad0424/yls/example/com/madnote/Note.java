@@ -9,7 +9,6 @@ import org.litepal.crud.DataSupport;
 public class Note extends DataSupport {
 
 
-
     public boolean isStar() {
         return isStar;
     }

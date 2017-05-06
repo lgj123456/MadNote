@@ -43,6 +43,9 @@
         android:background="#33ff0000"
         />
 </LinearLayout>
+
+
+
 <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -52,4 +55,26 @@
     android:layout_gravity="center"
     android:layout_marginTop="10dp"
     />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放声音"
+        android:id="@+id/btn_audioPlayer"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放视频"
+        android:id="@+id/btn_videoPlayer"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        />
+
 </LinearLayout>

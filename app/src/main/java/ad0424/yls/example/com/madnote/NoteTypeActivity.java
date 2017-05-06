@@ -12,6 +12,7 @@ import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 public class NoteTypeActivity extends AppCompatActivity {
 
     private CircleMenu circleMenu;
+    private String location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

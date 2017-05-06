@@ -1,6 +1,7 @@
 package ad0424.yls.example.com.madnote;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,13 +91,18 @@ public class MyAdapter extends BaseAdapter {
         viewHolder.mTv_title.setText(note.getTitle());
         viewHolder.mModifyTime.setText(note.getModifyTime());
 
-        if(note.getImgPath() != null){
+        if (note.getImgPath() != null) {
             Glide.with(convertView.getContext()).load(note.getImgPath()).into(viewHolder.MyImage);
-        }else{
+        } else {
             viewHolder.MyImage.setImageResource(R.drawable.a1);
         }
 
-
+        if (note.getAudioPath() != null) {
+            Log.i("aaaaaaaaaaa", "getView: a" + note.getAudioPath());
+        }
+        if (note.getVideoPath() != null) {
+            Log.i("aaaaaaaaaa", "getView: b" + "mmmmmmmmmm"+note.getVideoPath());
+        }
 
         return convertView;
     }

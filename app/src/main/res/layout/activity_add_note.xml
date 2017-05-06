@@ -9,109 +9,175 @@
     tools:context="ad0424.yls.example.com.madnote.AddNoteActivity">
 
     <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/add_note_toolBar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@color/colorBlue"-->
-        <!--/>-->
+    <!--android:id="@+id/add_note_toolBar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:background="@color/colorBlue"-->
+    <!--/>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorBlue"
         >
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
-        android:id="@+id/iv_title"
-        />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:text="MadNote"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:id="@+id/tv_title"
-        android:textSize="26sp"
-        />
+        <ImageView
+            android:id="@+id/iv_title"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="MadNote"
+            android:textSize="26sp"
+            />
 
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/iv_confirm"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/confirm"
-        />
+        <ImageView
+            android:id="@+id/iv_confirm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/confirm"
+            />
 
     </LinearLayout>
+
     <com.hdl.mricheditor.view.MRichEditor
         android:id="@+id/mre_editor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
+
+        <RelativeLayout
+            android:id="@+id/audio_layout"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/mic_bg"
+            android:visibility="gone">
+
+            <Chronometer
+                android:id="@+id/time_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/mic_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000"
+                android:textSize="12sp"/>
+
+            <ImageView
+                android:id="@+id/mic_icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mic_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textColor="#000"
+                android:textSize="12sp"/>
+
+        </RelativeLayout>
+
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/bg_love"
-            android:scaleType="centerCrop"
-            android:alpha="0.3"
             android:id="@+id/iv_bg_love"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_love"
             android:visibility="gone"
             />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/bg_study"
-            android:scaleType="centerCrop"
-            android:alpha="0.3"
             android:id="@+id/iv_bg_study"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_study"
             android:visibility="gone"
             />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/bg_sport"
-            android:scaleType="centerCrop"
-            android:alpha="0.3"
             android:id="@+id/iv_bg_sport"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_sport"
             android:visibility="gone"
             />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/bg_news"
-            android:scaleType="centerCrop"
-            android:alpha="0.3"
             android:id="@+id/iv_bg_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_news"
             android:visibility="gone"
             />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/bg_game"
-            android:scaleType="centerCrop"
-            android:alpha="0.3"
             android:id="@+id/iv_bg_game"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_game"
             android:visibility="gone"
             />
 
         <ImageView
+            android:id="@+id/iv_bg_life"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/bg_life"
+            android:alpha="0.5"
             android:scaleType="centerCrop"
-            android:alpha="0.3"
-            android:id="@+id/iv_bg_life"
+            android:src="@mipmap/bg_life"
             android:visibility="gone"
             />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/frameLayout"
+            android:layout_gravity="start|right"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="150dp"
+            android:src="@drawable/audio"
+            />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_record"
+            android:layout_below="@+id/btn_record"
+            android:layout_gravity="start|right"
+            android:layout_marginTop="67dp"
+            android:src="@drawable/video"
+            />
+
 
     </com.hdl.mricheditor.view.MRichEditor>
 </LinearLayout>

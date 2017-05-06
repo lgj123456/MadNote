@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton mFloatingActionButton;
     private AlarmManager alarmManager;
     private PendingIntent pi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,17 +53,22 @@ public class MainActivity extends AppCompatActivity {
 //        if (actionBar != null) {
 //            actionBar.hide();
 //        }
-applyPermissions();
+        applyPermissions();
         initViews();
         createDatabase();
         initData();
         initMyAdapter();
+
+    }
+
+    private void initLocation() {
+
     }
 
     private void applyPermissions() {
-        String permissions[] = {Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CAMERA};
-        if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(MainActivity.this,permissions,1001);
+        String permissions[] = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA,Manifest.permission.ACCESS_NETWORK_STATE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.RECORD_AUDIO};
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, permissions, 1001);
         }
     }
 
@@ -146,13 +152,13 @@ applyPermissions();
 
                     case 0:
                         // delete
-                        Toast.makeText(MainActivity.this, "del_index =" +del_index, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "del_index =" + del_index, Toast.LENGTH_SHORT).show();
                         int id = mNoteArrayList.get(del_index).getId();
                         Toast.makeText(MainActivity.this, "id=" + id, Toast.LENGTH_SHORT).show();
                         DatabaseUtils.del(id);
                         mNoteArrayList.clear();
                         mNoteArrayList = DatabaseUtils.query();
-                      initMyAdapter();
+                        initMyAdapter();
 
                         break;
                 }
@@ -172,20 +178,24 @@ applyPermissions();
             }
         });
 
-mSwipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String title = mNoteArrayList.get(position).getTitle();
-        String content = mNoteArrayList.get(position).getContent();
-        int id2 = mNoteArrayList.get(position).getId();
-        Intent intent = new Intent(MainActivity.this,UpdateActivity.class);
-        intent.putExtra("title",title);
-        intent.putExtra("content",content);
-        intent.putExtra("id",id2);
-        startActivity(intent);
-        finish();
-    }
-});
+        mSwipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String title = mNoteArrayList.get(position).getTitle();
+                String content = mNoteArrayList.get(position).getContent();
+                int id2 = mNoteArrayList.get(position).getId();
+                String audioPath = mNoteArrayList.get(position).getAudioPath();
+                String videoPath = mNoteArrayList.get(position).getVideoPath();
+                Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                intent.putExtra("title", title);
+                intent.putExtra("content", content);
+                intent.putExtra("id", id2);
+                intent.putExtra("audioPath", audioPath);
+                intent.putExtra("videoPath", videoPath);
+                startActivity(intent);
+
+            }
+        });
         mSwipeMenuListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -198,17 +208,17 @@ mSwipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() 
                 new TimePickerDialog(MainActivity.this, 0,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
-                            public void onTimeSet(TimePicker view,int hourOfDay, int minute) {
-                                //设置当前时间
+                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
                                 Calendar c = Calendar.getInstance();
                                 c.setTimeInMillis(System.currentTimeMillis());
-                                // 根据用户选择的时间来设置Calendar对象
+
                                 c.set(Calendar.HOUR, hourOfDay);
                                 c.set(Calendar.MINUTE, minute);
-                                // ②设置AlarmManager在Calendar对应的时间启动Activity
+
                                 alarmManager.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pi);
-                                Log.e("HEHE", c.getTimeInMillis() + "");   //这里的时间是一个unix时间戳
-                                // 提示闹钟设置完毕:
+                                Log.e("HEHE", c.getTimeInMillis() + "");
+
                                 Toast.makeText(MainActivity.this, "闹钟设置完毕~" + c.getTimeInMillis(),
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -242,6 +252,7 @@ mSwipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() 
         return true;
     }
 
+
     @Override
     protected void onResume() {
         mMyAdapter.notifyDataSetChanged();
@@ -252,4 +263,6 @@ mSwipeMenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+
 }

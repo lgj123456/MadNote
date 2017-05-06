@@ -1,6 +1,7 @@
 package ad0424.yls.example.com.madnote;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +21,11 @@ public class UpdateActivity extends AppCompatActivity {
     private String content;
     private String modifyTime;
     private int id;
+    private Button mBtn_audioPlayer;
+    private Button mBtn_videoPlayer;
+    private String mAudioPath = null;
+    private String mVideoPath = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +37,20 @@ public class UpdateActivity extends AppCompatActivity {
 
     private void initData() {
         Intent intent = getIntent();
-        if(intent != null){
+        if (intent != null) {
             title = intent.getStringExtra("title");
             content = intent.getStringExtra("content");
-            id = intent.getIntExtra("id",0);
+            id = intent.getIntExtra("id", 0);
+            mAudioPath = intent.getStringExtra("audioPath");
+            mVideoPath = intent.getStringExtra("videoPath");
             edt_update_title.setText(title);
             edt_update_content.setText(content);
+        }
+        if (!mAudioPath.isEmpty()) {
+            mBtn_audioPlayer.setVisibility(View.VISIBLE);
+        }
+        if (!mVideoPath.isEmpty()) {
+            mBtn_videoPlayer.setVisibility(View.VISIBLE);
         }
     }
 
@@ -52,11 +66,38 @@ public class UpdateActivity extends AppCompatActivity {
                 Date date = new Date();
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
                 modifyTime = simpleDateFormat.format(date);
-                DatabaseUtils.update(id,title,content,modifyTime);
+                DatabaseUtils.update(id, title, content, modifyTime);
                 Toast.makeText(UpdateActivity.this, "修改成功！！！", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(UpdateActivity.this,MainActivity.class);
+                Intent intent = new Intent(UpdateActivity.this, MainActivity.class);
                 startActivity(intent);
+                mBtn_videoPlayer.setVisibility(View.GONE);
+                mBtn_audioPlayer.setVisibility(View.GONE);
                 finish();
+            }
+        });
+
+
+        mBtn_audioPlayer = (Button) findViewById(R.id.btn_audioPlayer);
+        mBtn_videoPlayer = (Button) findViewById(R.id.btn_videoPlayer);
+        mBtn_audioPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mAudioPath != null) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.parse("file:///" + mAudioPath), "audio/MP3");
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mBtn_videoPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mVideoPath != null) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.parse("file:///" + mVideoPath), "video/mp4");
+                    startActivity(intent);
+                }
             }
         });
     }

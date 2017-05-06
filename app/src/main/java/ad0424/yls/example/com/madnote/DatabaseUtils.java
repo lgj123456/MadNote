@@ -16,7 +16,7 @@ public class DatabaseUtils {
 
     private static List<Note> noteArrayList = new ArrayList<>();
 
-    public static boolean insert(String title, String content, String createTime, String imgPath, String modifyTime, int noteType) {
+    public static boolean insert(String title, String content, String createTime, String imgPath, String modifyTime, int noteType, String audioRecorderPath, String videoPath) {
 
         Note note = new Note();
         note.setTitle(title);
@@ -25,13 +25,15 @@ public class DatabaseUtils {
         note.setModifyTime(modifyTime);
         note.setImgPath(imgPath);
         note.setNoteType(noteType);
+        note.setAudioPath(audioRecorderPath);
+        note.setVideoPath(videoPath);
         note.save();
         return true;
     }
 
-    public static boolean update(int id,String title,String content,String modifyTime) {
+    public static boolean update(int id, String title, String content, String modifyTime) {
 
-Note note = new Note();
+        Note note = new Note();
         note.setTitle(title);
         note.setContent(content);
         note.setModifyTime(modifyTime);
@@ -85,7 +87,7 @@ Note note = new Note();
 //
 //        }
 //        return noteArrayList;
-        noteArrayList = DataSupport.where("isDel = ?",0+"").find(Note.class);
+        noteArrayList = DataSupport.where("isDel = ?", 0 + "").find(Note.class);
         for (int i = 0; i < noteArrayList.size(); i++) {
             Log.i("cccccccc", "query: " + "id=" + noteArrayList.get(i).getId() + "  title=" + noteArrayList.get(i).getTitle() + "  isdel=" + noteArrayList.get(i).getIsDel());
 
