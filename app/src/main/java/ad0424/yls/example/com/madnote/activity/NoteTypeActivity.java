@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
+
+import ad0424.yls.example.com.madnote.model.NoteType;
+import ad0424.yls.example.com.madnote.R;
 
 public class NoteTypeActivity extends AppCompatActivity {
 

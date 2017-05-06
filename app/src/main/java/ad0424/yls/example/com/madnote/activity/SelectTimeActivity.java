@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.text.SimpleDateFormat;
+
+import ad0424.yls.example.com.madnote.R;
 
 /**
  * Created by yhdj on 2017/5/3.

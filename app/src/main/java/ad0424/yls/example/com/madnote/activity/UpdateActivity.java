@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import ad0424.yls.example.com.madnote.utils.DatabaseUtils;
+import ad0424.yls.example.com.madnote.R;
 
 public class UpdateActivity extends AppCompatActivity {
 

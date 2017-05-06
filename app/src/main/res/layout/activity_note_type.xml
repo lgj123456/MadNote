@@ -6,7 +6,7 @@
     android:id="@+id/activity_note_type"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ad0424.yls.example.com.madnote.NoteTypeActivity">
+    tools:context="ad0424.yls.example.com.madnote.activity.NoteTypeActivity">
 
 
     <com.hitomi.cmlibrary.CircleMenu

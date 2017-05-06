@@ -1,5 +1,5 @@
 
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.db;
 import android.annotation.TargetApi;
 import android.hardware.Camera;
 import android.os.Build;

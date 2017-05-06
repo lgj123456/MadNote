@@ -3,6 +3,6 @@
     <dbname value="note"></dbname>
     <version value="1"></version>
     <list>
-        <mapping class="ad0424.yls.example.com.madnote.Note"></mapping>
+        <mapping class="ad0424.yls.example.com.madnote.model.Note"></mapping>
     </list>
 </litepal>

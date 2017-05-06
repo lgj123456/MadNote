@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.model;
 
 import org.litepal.crud.DataSupport;
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ad0424.yls.example.com.madnote.AddNoteActivity">
+    tools:context="ad0424.yls.example.com.madnote.activity.AddNoteActivity">
 
     <!--<android.support.v7.widget.Toolbar-->
     <!--android:id="@+id/add_note_toolBar"-->

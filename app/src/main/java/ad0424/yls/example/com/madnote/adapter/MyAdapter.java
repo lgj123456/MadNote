@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,6 +12,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
+
+import ad0424.yls.example.com.madnote.R;
+import ad0424.yls.example.com.madnote.model.Note;
+import ad0424.yls.example.com.madnote.model.NoteType;
 
 /**
  * Created by yhdj on 2017/4/28.

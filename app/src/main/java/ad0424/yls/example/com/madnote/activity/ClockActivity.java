@@ -1,10 +1,12 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import ad0424.yls.example.com.madnote.R;
 
 public class ClockActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;

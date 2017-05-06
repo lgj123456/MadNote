@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.utils;
 
 import android.content.Context;
 import android.content.res.Configuration;

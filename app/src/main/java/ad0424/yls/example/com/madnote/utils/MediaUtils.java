@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.utils;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+
+import ad0424.yls.example.com.madnote.db.CameraHelper;
 
 
 public class MediaUtils implements SurfaceHolder.Callback {

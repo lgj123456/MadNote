@@ -39,25 +39,25 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SearchActivity"/>
-        <activity android:name=".SelectTimeActivity"/>
-        <activity android:name=".NoteTypeActivity">
+        <activity android:name=".activity.SearchActivity"/>
+        <activity android:name=".activity.SelectTimeActivity"/>
+        <activity android:name=".activity.NoteTypeActivity">
         </activity>
-        <activity android:name=".AddNoteActivity">
+        <activity android:name=".activity.AddNoteActivity">
         </activity>
         <!-- <provider -->
         <!-- android:authorities="com.example.madnote" -->
         <!-- android:name=".MyContentProvider"/> -->
-        <activity android:name=".UpdateActivity">
+        <activity android:name=".activity.UpdateActivity">
         </activity>
-        <activity android:name=".ClockActivity">
+        <activity android:name=".activity.ClockActivity">
         </activity>
         <activity android:name=".activity.VideoActivity">
         </activity>

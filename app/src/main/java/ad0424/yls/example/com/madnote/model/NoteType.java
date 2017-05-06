@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.model;
 
 /**
  * Created by yhdj on 2017/4/28.

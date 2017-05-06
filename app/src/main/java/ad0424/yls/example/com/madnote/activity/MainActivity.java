@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.activity;
 
 import android.Manifest;
 import android.app.AlarmManager;
@@ -33,6 +33,11 @@ import org.litepal.LitePal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import ad0424.yls.example.com.madnote.utils.DatabaseUtils;
+import ad0424.yls.example.com.madnote.adapter.MyAdapter;
+import ad0424.yls.example.com.madnote.model.Note;
+import ad0424.yls.example.com.madnote.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +30,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import ad0424.yls.example.com.madnote.activity.VideoActivity;
+import ad0424.yls.example.com.madnote.utils.DatabaseUtils;
+import ad0424.yls.example.com.madnote.utils.MediaUtils;
+import ad0424.yls.example.com.madnote.model.NoteType;
+import ad0424.yls.example.com.madnote.R;
 
 public class AddNoteActivity extends AppCompatActivity {
 

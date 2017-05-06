@@ -1,4 +1,4 @@
-package ad0424.yls.example.com.madnote;
+package ad0424.yls.example.com.madnote.utils;
 
 import android.util.Log;
 
@@ -6,6 +6,8 @@ import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ad0424.yls.example.com.madnote.model.Note;
 
 /**
  * Created by yhdj on 2017/5/5.

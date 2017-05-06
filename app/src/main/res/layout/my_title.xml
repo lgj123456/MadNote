@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
-    tools:context="ad0424.yls.example.com.madnote.MainActivity"
+    tools:context="ad0424.yls.example.com.madnote.activity.MainActivity"
     android:background="@color/colorBlue"
     >
 <ImageView
